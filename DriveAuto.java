@@ -19,5 +19,13 @@ public class DriveAuto
 	{
 		leftMotor.setPower(0);
 		rightMotor.setPower(0);
+
+		//turns left
+		leftMotor.setPower(1);
+		rightMotor.setPower(-1);
+
+		//turns right
+		leftMotor.setPower(-1);
+		rightMotor.setPower(1);
 	}
 }
