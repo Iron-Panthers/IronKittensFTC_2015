@@ -1,0 +1,28 @@
+public class DriveAuto
+{
+	//initialize classes and run stuff first
+
+	void DriveStraight(double distance, double speed)
+	{
+		1. set speed same for both motors and drive
+
+		2. if statement to check if it reached distance, use encoders
+
+		3. stop if it reaches distance
+
+		4. reset encoders
+	}
+
+	void Turn(double angle)
+	{
+		1. stop all motors, set speed to 0
+
+		2. set speed opposite to each other to turn one way
+
+		3. use angles to determine how far they turned
+
+		4. when it reaches a spacific angle, stop turning, using encoders
+
+		5. reset encoders
+	}
+}
