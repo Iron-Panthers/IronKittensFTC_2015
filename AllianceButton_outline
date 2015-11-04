@@ -1,0 +1,27 @@
+enum AllianceColor {BLUE, RED}
+
+D = distance between buttons
+P = distance from the button so that it is pressed
+B = buffer distance between buttons and robot
+
+AllianceButton(AllianceColor color)
+	
+	AllianceColor color
+	RGB(rGBSensor)
+	Ultrasonic(ultrasonic1)
+	Motors(reference DriveAuto)
+
+	boolean checkColor()
+		1. Check the color
+		2. Return if found color is alliance color
+
+	void SwapLight()
+		1. Turn 90 degrees
+		2. Move D cm
+		3. Turn -90 degrees
+
+	void hitButton()
+		1. while distance <= P:
+			2. move forward slowly
+		3. while distance <= B:
+			4. move backwards a bit faster
