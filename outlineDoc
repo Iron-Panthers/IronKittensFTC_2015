@@ -47,3 +47,6 @@ PullUpBar(Justin & Wesley)
 		servo set = 90
 	void SwingDown()
 		servo set = 0
+
+3 regular servos
+5 motors
