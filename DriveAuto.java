@@ -3,53 +3,57 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 
 public class DriveAuto
 {
-	public DcMotor leftMotor;
-    public DcMotor rightMotor;
+	public DcMotor frontLeft;
+    public DcMotor frontRight;
+    public DcMotor backLeft;
+    public DcMotor backRight
 
-	double WHEEL_DIAMETER = 7;
+	double BACK_DIAMETER = 4;
 	double ROBOT_WIDTH = 18;
 
 	public void driveStraight(double distance, double speed)
 	{
 		double targetValue = distance/(4 * Math.PI);
-		double start = leftMotor.getCurrentPosition();
+		double start = backLeft.getCurrentPosition();
 
 		targetValue = targetValue + start;
 
-		while(leftMotor.getCurrentPosition() && rightMotor.getCurrentPosition() < targetValue)
+		while(backLeft.getCurrentPosition() && backRight.getCurrentPosition() < targetValue)
 		{
-			leftMotor.setPower(speed);
-			rightMotor.setPower(speed);
+			backLeft.setPower(speed);
+			backRight.setPower(speed);
+			frontLeft.setPower(speed);
+			frontRight.setPower(speed);
 		}
 	}
 
 	public void turnRight(double angle)
 	{
-		double start = leftMotor.getCurrentPosition();
-		leftMotor.setPower(0);
-		rightMotor.setPower(0);
+		double start = backLeft.getCurrentPosition();
+		backLeft.setPower(0);
+		backRight.setPower(0);
 
 		double targetValue = ((18 * Math.PI) * (angle / 360)) / 4 * Math.PI;
 
-		while(rightMotor.getCurrentPosition() && leftMotor.getCurrentPosition() < targetValue)
+		while(backRight.getCurrentPosition() && backLeft.getCurrentPosition() < targetValue)
 		{
-			leftMotor.setPower(0.5);
-			rightMotor.setPower(-0.5);
+			backLeft.setPower(0.5);
+			backRight.setPower(-0.5);
 		}
 	}
 
 	public void turnLeft(double angle)
 	{
-		double start = rightMotor.getCurrentPosition();
-		leftMotor.setPower(0);
-		rightMotor.setPower(0);
+		double start = backRight.getCurrentPosition();
+		backLeft.setPower(0);
+		backRight.setPower(0);
 
 		double targetValue = ((18 * Math.PI) * (angle / 360)) / 4 * Math.PI;
 
-		while(rightMotor.getCurrentPosition() && leftMotor.getCurrentPosition() < targetValue)
+		while(backRight.getCurrentPosition() && backLeft.getCurrentPosition() < targetValue)
 		{
-			rightMotor.setPower(0.5);
-			leftMotor.setPower(-0.5);
+			backRight.setPower(0.5);
+			backLeft.setPower(-0.5);
 		}
 	}
 }
