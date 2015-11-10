@@ -6,7 +6,7 @@ public class DriveAuto
 	public DcMotor frontLeft;
     public DcMotor frontRight;
     public DcMotor backLeft;
-    public DcMotor backRight
+    public DcMotor backRight;
 
     double FRONT_DIAMETER = 7; 
 	double BACK_DIAMETER = 4;
