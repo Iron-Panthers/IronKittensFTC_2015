@@ -5,35 +5,49 @@ public class Climber
 {
 	//DcMotor(DcMotorController controller, int portNumber)
 
-	DcMotor elevatorMotor = new DcMotor(DcMotorController controller, int portNumber)
-
-	DcMotor dumpServo = new DcMotor(DcMotorController controller, int portNumber)
-	
+	public DcMotor elevatorMotor;
+	public Servo dumpServo;
 
 	void setMotorPower(int Motor, double power)
 	{
+		
 	}
+	
 	public void lowerPlatform()
 	{
-   		elevatorMotor.setMotorPower()
+   		elevatorMotor.setMotorPower(0.75)
+   		{
+   			if (elevatormotor.getcurrentposition() < x;)
+   			{
+   				elevatorMotor.setMotorPower(0);
+   			}
+   		}
     } 
+   	
    	public void raisePlatform()
    	{
-		elevatorMotor.setMotorPower()
+		elevatormotor.setMotorPower(0.75)
+		{
+			if (elevatormotor.getcurrentposition() > x;)
+			{
+   				elevatorMotor.setMotorPower(0);
+			}
+		}
    	}
 	
 	void setServoPosition(int channel, double position)
 	{
 
 	}  
+    
     public void dumpPlatform()
     {
-		dumpServo.setServoPosition()
+		dumpServo.setServoPosition(0) //value needs to be confirmed
 	}
 
     public void resetPlatform()
 	{
-		dumpServo.setServoPosition()
+		dumpServo.setServoPosition(100)
     }
 	   
 //elevatormotor.getcurrentposition
