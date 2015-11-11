@@ -3,30 +3,42 @@ package io.github.plenglin.ftc;
 import com.qualcomm.robotcore.hardware.*
 
 /**
-	By Maxim and Matthew
+	By Maxim
 **/
 public class AllianceButton {
 
     /** the ultrasonic sensor id **/
-    public static final String ULTRASONIC="ultrasonic", COLOR_SENSOR="RGBsensor";
+    public static final String ULTRASONIC = "ultrasonic";
 
-    /** distance between buttons **/
+    /** the color sensor id **/
+    public static final String COLOR_SENSOR = "color";
+
+    /** the motor id **/
+    public static final String MOTOR_LEFT = "motor_left", MOTOR_RIGHT = "motor_right";
+
+    /** drive speed **/
+    public static final double SLOW = 0.25;
+
+    /** distance between buttons (inches) **/
     public static final double BUTTON_DIST=3;
 
-    /** pressing threshold **/
-    public static final double BUTTON_PRESS=3;
+    /** pressing threshold (inches) **/
+    public static final double BUTTON_PRESS=3/2.54d;
 
-    /** buffer distance **/
+    /** buffer distance (inches) **/
     public static final double BUFFER_DIST=3;
 
     private DriveAuto drive;
+    private DcMotor motorL, motorR;
     private UltrasonicSensor ultrasonic;
     private ColorSensor color;
     private AllianceColor teamColor;
 
     public AllianceButton(DriveAuto drive, HardwareMap hwm, AllianceColor team) {
         this.ultrasonic = hwm.ultrasonicSensor.get(ULTRASONIC);
-        this.color = hwm.colorSensor.get("RGBsensor");
+        this.motorL = hwm.dcMotor.get(MOTOR_LEFT);
+        this.motorR = hwm.dcMotor.get(MOTOR_RIGHT);
+        this.color = hwm.colorSensor.get(COLOR_SENSOR);
         this.drive = drive;
         this.teamColor = teamColor;
     }
@@ -45,22 +57,32 @@ public class AllianceButton {
 
     public void swapLight() {
     	drive.turn(90);
-    	drive.driveStraight(BUTTON_DIST, 1);
+    	drive.driveStraight(BUTTON_DIST, SLOW);
     	drive.turn(-90);
     }
 
     public void hitButton() {
-    	/*
-    	PSEUDO-ISH CODE
+
+        motorL.setDirection(DcMotor.Direction.FORWARD);
+        motorR.setDirection(DcMotor.Direction.FORWARD);
+
+        motorL.setPower(SLOW);
+        motorR.setPower(SLOW);
+
     	while (ultrasonic.getUltrasonicLevels() <= BUTTON_PRESS) {
-    		drive.driveStraight();
-    	}
-    	drive.stop();
+
+        }
+
+        motorL.setDirection(DcMotor.Direction.REVERSE);
+        motorR.setDirection(DcMotor.Direction.REVERSE);
+
     	while (ultrasonic.getUltrasonicLevels() >= BUFFER_DIST) {
-    		drive.driveBackwards();
-    	}
-    	drive.stop()
-    	*/
+
+        }
+
+        motorL.setPower(0);
+        motorR.setPower(0);
+
     }
 
 }
