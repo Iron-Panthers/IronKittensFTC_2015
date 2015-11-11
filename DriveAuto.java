@@ -8,16 +8,21 @@ public class DriveAuto
     public DcMotor backLeft;
     public DcMotor backRight;
 
-    double FRONT_DIAMETER = 7; 
-	double BACK_DIAMETER = 4;
-	double ROBOT_WIDTH = 18;
+    frontLeft = hardwareMap.dcMotor.get("frontLeft");
+    frontRight = hardwareMap.dcMotor.get("frontRight");
+    backLeft = hardwareMap.dcMotor.get("backLeft");
+    backRight = hardwareMap.dcMotor.get("backRight");
 
-	public void driveStraight(double distance, double speed)
+    public static final double FRONT_WHEEL_DIAMETER = 7; 
+	public static final double BACK_WHEEL_DIAMETER = 4;
+	public static final double ROBOT_WIDTH = 18;
+
+	public void driveStraight(double distance, double speed) //distance is in inches
 	{
-		double targetValue = distance/(BACK_DIAMETER * Math.PI);
+		double targetValue = distance/(BACK_WHEEL_DIAMETER * Math.PI);
 		double start = backLeft.getCurrentPosition();
 
-		targetValue = targetValue + start;
+		targetValue += start;
 
 		while(backLeft.getCurrentPosition() && backRight.getCurrentPosition() < targetValue)
 		{
@@ -34,7 +39,9 @@ public class DriveAuto
 		backLeft.setPower(0);
 		backRight.setPower(0);
 
-		double targetValue = ((ROBOT_WIDTH * Math.PI) * (angle / 360)) / BACK_DIAMETER * Math.PI;
+		double targetValue = ((ROBOT_WIDTH * Math.PI) * (angle / 360)) / BACK_WHEEL_DIAMETER * Math.PI;
+
+		targetValue += start;
 
 		while(backRight.getCurrentPosition() && backLeft.getCurrentPosition() < targetValue)
 		{
@@ -51,7 +58,9 @@ public class DriveAuto
 		backLeft.setPower(0);
 		backRight.setPower(0);
 
-		double targetValue = ((ROBOT_WIDTH * Math.PI) * (angle / 360)) / BACK_DIAMETER * Math.PI;
+		double targetValue = ((ROBOT_WIDTH * Math.PI) * (angle / 360)) / BACK_WHEEL_DIAMETER * Math.PI;
+
+		targetValue += start;
 
 		while(backRight.getCurrentPosition() && backLeft.getCurrentPosition() < targetValue)
 		{
