@@ -1,6 +1,6 @@
 package io.github.plenglin.ftc;
 
-import com.qualcomm.robotcore.hardware.*
+import com.qualcomm.robotcore.hardware.*;
 
 /**
 	Alliance Button utilities by Maxim
