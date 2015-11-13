@@ -3,7 +3,7 @@ package io.github.plenglin.ftc;
 import com.qualcomm.robotcore.hardware.*
 
 /**
-	By Maxim
+	Alliance Button utilities by Maxim
 **/
 public class AllianceButton {
 
@@ -34,6 +34,11 @@ public class AllianceButton {
     private ColorSensor color;
     private AllianceColor teamColor;
 
+    /**
+        @param drive The driving utilities
+        @param hwm The HardwareMap object that the hardware is sourced from.
+        @param team Which alliance the robot is on
+    */
     public AllianceButton(DriveAuto drive, HardwareMap hwm, AllianceColor team) {
         this.ultrasonic = hwm.ultrasonicSensor.get(ULTRASONIC);
         this.motorL = hwm.dcMotor.get(MOTOR_LEFT);
@@ -43,6 +48,10 @@ public class AllianceButton {
         this.teamColor = teamColor;
     }
 
+    /**
+        Checks the color.
+        @return whether the detected color matches the alliance color
+    */
     public boolean checkColor() {
     	/*
     	PSEUDOCODE:
@@ -55,12 +64,18 @@ public class AllianceButton {
         return false;
     }
 
+    /**
+        Changes the light it is on.
+    */
     public void swapLight() {
     	drive.turn(90);
     	drive.driveStraight(BUTTON_DIST, SLOW);
     	drive.turn(-90);
     }
 
+    /**
+        Drives forward to hit the button.
+    */
     public void hitButton() {
 
         motorL.setDirection(DcMotor.Direction.FORWARD);
