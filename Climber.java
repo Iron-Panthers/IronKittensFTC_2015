@@ -3,37 +3,56 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 
 public class Climber
 {
-	//DcMotor(DcMotorController controller, int portNumber)
+	public DcMotor elevatorMotor;
+	public Servo dumpServo;
 
-	DcMotor elevatorMotor = new DcMotor(DcMotorController controller, int portNumber)
+		
+	public static final double DUMP_POSITION = 100;
+	public static final double UP_POSITION = 10;
+	public static final double PLATFORM_DOWN = 100;
+	public static final double PLATFORM_UP = 10;
 
-	DcMotor dumpServo = new DcMotor(DcMotorController controller, int portNumber)
-	
-
+	public Climber(HardwareMap hardwareMap)
+	{
+		elevatorMotor = hardwareMap.dcMotor.get("elevatorMotor");
+		dumpServo = hardwareMap.Servo.get("dumpServo");
+	}
 	void setMotorPower(int Motor, double power)
 	{
+		
 	}
+	
 	public void lowerPlatform()
 	{
-   		elevatorMotor.setMotorPower()
+   		elevatorMotor.setMotorPower(0.75);
+		if (elevatormotor.getcurrentposition() < PLATFORM_DOWN)
+		{
+			elevatorMotor.setMotorPower(0);
+		}
     } 
+   	
    	public void raisePlatform()
    	{
-		elevatorMotor.setMotorPower()
+		elevatormotor.setMotorPower(0.75)
+		if (elevatormotor.getcurrentposition() > PLATFORM_UP)
+		{
+			elevatorMotor.setMotorPower(0);
+		}
    	}
 	
 	void setServoPosition(int channel, double position)
 	{
 
 	}  
+    
     public void dumpPlatform()
     {
-		dumpServo.setServoPosition()
+		dumpServo.setServoPosition(DUMP_POSITION); //value needs to be confirmed
 	}
 
     public void resetPlatform()
 	{
-		dumpServo.setServoPosition()
+		dumpServo.setServoPosition(UP_POSITION);
     }
 	   
 //elevatormotor.getcurrentposition
@@ -54,6 +73,6 @@ public class Climber
 //	uses both motors
 //void lowerPlatform()
 //	uses both motors[]
-
+// written by BigKobe and twamble
 //classify servo
 //outline steps of the methods
