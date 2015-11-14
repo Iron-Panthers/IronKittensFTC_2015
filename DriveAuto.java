@@ -1,5 +1,4 @@
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorController;
+import com.qualcomm.robotcore.hardware.*;
 
 public class DriveAuto
 {
@@ -8,14 +7,17 @@ public class DriveAuto
     public DcMotor backLeft;
     public DcMotor backRight;
 
-    frontLeft = hardwareMap.dcMotor.get("frontLeft");
-    frontRight = hardwareMap.dcMotor.get("frontRight");
-    backLeft = hardwareMap.dcMotor.get("backLeft");
-    backRight = hardwareMap.dcMotor.get("backRight");
-
     public static final double FRONT_WHEEL_DIAMETER = 7; 
 	public static final double BACK_WHEEL_DIAMETER = 4;
 	public static final double ROBOT_WIDTH = 18;
+
+	public DriveAuto(HardwareMap hardwareMap)
+	{
+		frontLeft = hardwareMap.dcMotor.get("frontLeft");
+	    frontRight = hardwareMap.dcMotor.get("frontRight");
+	    backLeft = hardwareMap.dcMotor.get("backLeft");
+	    backRight = hardwareMap.dcMotor.get("backRight");
+	}
 
 	public void driveStraight(double distance, double speed) //distance is in inches
 	{
