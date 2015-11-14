@@ -1,46 +1,48 @@
+import com.qualcomm.robotcore.hardware.*;
 
 public class PullUpBar
-
 {
 
-	private Servo thePullServo;
-	private Motor thePullMotor;
-	//Motor(leftPullUpMotor, RightPullUpMotor)
-	//Servo(leftSwing, rightSwing
+	public static final String SERVO_L = "pullupservol", SERVO_R = "pullupservor";
 
-	public PullUpBar(){
-		thePullServo = new Servo(needsServoController, 5); //whichever port the servo is at
-		thePullMotor = new Motor(needsMOTORFUCKINGCONROLLERSTUPID, 6);//again, port #
+	public static final String MOTOR_L = "pullupmotorl", MOTOR_R = "pullupmotorr";
+
+	public static final int EXTEND_POS = 1337, RETRACT_POS = 123;
+
+	public static final double SWING_UP = 1337, SWING_DOWN = 123;
+
+	private Servo servoL, servoR;
+	private Motor motorL, motorR;
+
+	public PullUpBar(HardwareMap hwm) {
+		servoL = hwm.servo.get(SERVO_L);
+		servoR = hwm.servo.get(SERVO_R);
+		motorL = hwm.servo.get(MOTOR_L);
+		motorR = hwm.servo.get(MOTOR_R);
 	}
 
 	public void setExtend()
 	{
-		int wantedExtendPosition = 200000;
-
-		thePullMotor.setTargetPosition(wantedExtendPosition);
-
-		//Put int position to where you want it to be to extend.
-
+		motorL.setTargetPosition(EXTEND_POS);
+		motorR.setTargetPosition(EXTEND_POS);
 	}
-	//This Extends it
+
 	public void setRetract()
 	{
-		int wantedRetractPosition = 200000;
-
-		thePullMotor.setTargetPosition(wantedRetractPosition);
-
-		//Put int position to where you want it to be to retract.
+		motorL.setTargetPosition(RETRACT_POS);
+		motorR.setTargetPosition(RETRACT_POS);
 	}
-	// This Retracts the thing.
 
 	public void SwingUp()
 	{
-		thePullServo.setPosition(int fuck you);
-
+		servoL.setPosition(SWING_UP);
+		servoR.setPosition(SWING_UP);
 	}
+
 	public void SwingDown()
 	{
-		thePullServo.setPosition(int ya);
-
+		servoL.setPosition(SWING_DOWN);
+		servoR.setPosition(SWING_DOWN);
 	}
-			//0.0 to 1.0 - set it what you please
+
+}

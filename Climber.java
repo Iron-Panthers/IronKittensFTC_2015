@@ -1,60 +1,57 @@
+import com.qualcomm.robotcore.hardware.*;
+
 public class Climber
 {
-    public DcMotor elevatorMotor;
-    public Servo dumpServo;
 
-           
-    public static final double DUMP_POSITION = 100;
-    public static final double UP_POSITION = 10;
-    public static final double PLATFORM_DOWN = 100;
-    public static final double PLATFORM_UP = 10;
+	public static final String ELEVATOR_MOTOR = "elevatorMotor";
 
-    public Climber(HardwareMap hardwareMap)
-    {
-        elevatorMotor = hardwareMap.dcMotor.get("elevatorMotor");
-        dumpServo = hardwareMap.Servo.get("dumpServo");
-    }
-    void setMotorPower(int motor, double power)
-    {
-           
-    }
+	public static final String DUMP_SERVO = "dumpServo";
 
-    public void lowerPlatform()
-    {
-        elevatorMotor.setMotorPower(0.75);
-        if (elevatormotor.getcurrentposition() < PLATFORM_DOWN)
-        {
-            elevatorMotor.setMotorPower(0);
-        }
-    }
-   
-    public void raisePlatform()
-    {
-        elevatormotor.setMotorPower(0.75)
-        if (elevatormotor.getcurrentposition() > PLATFORM_UP)
-        {
-            elevatorMotor.setMotorPower(0);
-        }
-    }
-   
-    void setServoPosition(int channel, double position)
-    {
+	public static final double DUMP_POSITION = 100, UP_POSITION = 10;
 
-    }  
-   
+	public static final double PLATFORM_DOWN = 100, PLATFORM_UP = 10;
+	
+	public DcMotor elevatorMotor;
+	public Servo dumpServo;
+
+	public Climber(HardwareMap hardwareMap)
+	{
+		elevatorMotor = hardwareMap.dcMotor.get(ELEVATOR_MOTOR);
+		dumpServo = hardwareMap.servo.get(DUMP_SERVO);
+	}
+	
+	public void lowerPlatform()
+	{
+		elevatorMotor.setDirection(DcMotor.Direction.FORWARD); // change directions if necessary
+   		elevatorMotor.setMotorPower(0.75);
+		while (elevatorMotor.getCurrentPosition() < PLATFORM_DOWN) // change boolean operator if necessary
+		{
+
+		}
+		elevatorMotor.setMotorPower(0);
+    } 
+   	
+   	public void raisePlatform()
+   	{
+   		elevatorMotor.setDirection(DcMotor.Direction.REVERSE); 
+		elevatorMotor.setMotorPower(0.75)
+		while (elevatorMotor.getCurrentPosition() > PLATFORM_UP)
+		{
+
+		}
+		elevatorMotor.setMotorPower(0);
+   	}
+	    
     public void dumpPlatform()
     {
-        dumpServo.setServoPosition(DUMP_POSITION);
-    }
+		dumpServo.setServoPosition(DUMP_POSITION);
+	}
 
     public void resetPlatform()
     { 
         dumpServo.setServoPosition(UP_POSITION);
     }
-           
-//elevatormotor.getcurrentposition
-       
- 
+
 }
  
  
