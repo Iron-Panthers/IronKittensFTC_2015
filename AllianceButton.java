@@ -1,6 +1,6 @@
-package io.github.plenglin.ftc;
+package com.qualcomm.ftcrobotcontroller.IronKittensFTC_2015;
 
-import com.qualcomm.robotcore.hardware.*
+import com.qualcomm.robotcore.hardware.*;
 
 /**
 	By Maxim

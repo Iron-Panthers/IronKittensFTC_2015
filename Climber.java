@@ -1,5 +1,9 @@
-import com.qualcomm.robotcore.hardware.DcMotor
+package com.qualcomm.ftcrobotcontroller.IronKittensFTC_2015;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.*;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.DcMotorController;
+
 
 public class Climber
 {
@@ -33,8 +37,8 @@ public class Climber
    	
    	public void raisePlatform()
    	{
-		elevatormotor.setMotorPower(0.75)
-		if (elevatormotor.getcurrentposition() > PLATFORM_UP)
+		elevatorMotor.setMotorPower(0.75);
+		if (elevatorMotor.getcurrentposition() > PLATFORM_UP)
 		{
 			elevatorMotor.setMotorPower(0);
 		}
