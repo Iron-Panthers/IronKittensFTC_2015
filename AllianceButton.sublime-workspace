@@ -1,0 +1,305 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"DUM",
+				"DUMP_SERVO"
+			],
+			[
+				"SWIN",
+				"SWING_DOWN"
+			],
+			[
+				"set",
+				"setTargetPosition"
+			],
+			[
+				"is",
+				"isAlive"
+			],
+			[
+				"prin",
+				"print"
+			],
+			[
+				"rever",
+				"reversible"
+			],
+			[
+				"larg",
+				"largestDigit"
+			],
+			[
+				"add",
+				"addSubordinate"
+			],
+			[
+				"Buf",
+				"BufferedWriter"
+			],
+			[
+				"Buffered",
+				"BufferedWriter"
+			],
+			[
+				"Buff",
+				"BufferedReader"
+			],
+			[
+				"pr",
+				"println"
+			],
+			[
+				"Piped",
+				"PipedInputStream"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+			"import this",
+			"clear()",
+			"help()",
+			"help",
+			"print('hi')",
+			"print 'hi'"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/run/user/1000/gvfs/mtp:host=%5Busb%3A002%2C011%5D/Phone/com.qualcomm.ftcrobotcontroller.logcat",
+		"/home/penguinmancer/git/IronKittensFTC_2015/README.md",
+		"/run/user/1000/gvfs/mtp:host=%5Busb%3A002%2C005%5D/Phone/com.qualcomm.ftcrobotcontroller.logcat",
+		"/run/user/1000/gvfs/mtp:host=%5Busb%3A002%2C019%5D/Phone/com.qualcomm.ftcrobotcontroller.logcat",
+		"/run/user/1000/gvfs/mtp:host=%5Busb%3A002%2C020%5D/Phone/com.qualcomm.ftcrobotcontroller.logcat",
+		"/run/user/1000/gvfs/mtp:host=%5Busb%3A002%2C018%5D/Phone/com.qualcomm.ftcrobotcontroller.logcat",
+		"/run/user/1000/gvfs/mtp:host=%5Busb%3A002%2C016%5D/Phone/com.qualcomm.ftcrobotcontroller.logcat",
+		"/run/user/1000/gvfs/mtp:host=%5Busb%3A002%2C017%5D/Phone/com.qualcomm.ftcrobotcontroller.logcat",
+		"/run/user/1000/gvfs/mtp:host=%5Busb%3A002%2C015%5D/Phone/com.qualcomm.ftcrobotcontroller.logcat",
+		"/home/penguinmancer/git/IronKittensFTC_2015/AllianceButton_outline",
+		"/home/penguinmancer/git/IronKittensFTC_2015/AllianceButton.java",
+		"/home/penguinmancer/Desktop/ClassOfDerp.java",
+		"/home/penguinmancer/git/IronKittensFTC_2015/AllianceColor.java",
+		"/home/penguinmancer/Desktop/skeleton.txt",
+		"/home/penguinmancer/.config/sublime-text-3/Packages/User/JavaC.sublime-build",
+		"/home/penguinmancer/Desktop/Problem145.java",
+		"/home/penguinmancer/Desktop/todo.txt",
+		"/home/penguinmancer/Desktop/Erasthostenes.java",
+		"/home/penguinmancer/workspace/Text-Based Adventure/src/textadv/Story.java",
+		"/home/penguinmancer/Desktop/Problem6.java",
+		"/home/penguinmancer/Desktop/Problem500.java",
+		"/home/penguinmancer/Desktop/foo.cpp",
+		"/home/penguinmancer/Desktop/Test.java",
+		"/home/penguinmancer/Desktop/Employee.java",
+		"/home/penguinmancer/Desktop/Hangman.java",
+		"/home/penguinmancer/Desktop/Dictionary.java",
+		"/home/penguinmancer/workspace/tabToSpace.py",
+		"/home/penguinmancer/Desktop/Calculator.java",
+		"/home/penguinmancer/Desktop/PipedThreads.java",
+		"/home/penguinmancer/Desktop/ClassCreation.java",
+		"/home/penguinmancer/Desktop/FeedbackPipes.java",
+		"/home/penguinmancer/Desktop/Threads.java",
+		"/home/penguinmancer/Desktop/Primes.java",
+		"/home/penguinmancer/Desktop/Prime2.java",
+		"/media/penguinmancer/E8BF-6908/matthewt/src/Something.java",
+		"/home/penguinmancer/Desktop/ConvoWithJerry.java",
+		"/home/penguinmancer/Desktop/First.java",
+		"/media/penguinmancer/E8BF-6908/matthewt/src/FinalProject.java",
+		"/media/penguinmancer/E8BF-6908/matthewt/src/finalpr.java",
+		"/media/penguinmancer/E8BF-6908/matthewt/src/PigLatin.java",
+		"/media/penguinmancer/E8BF-6908/matthewt/src/PhoneNumber.java",
+		"/home/penguinmancer/Desktop/CubeTimer.java"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"elevatormotor",
+			"SWING_UP",
+			"thePullServo",
+			"min",
+			"color",
+			"sensor",
+			"F",
+			"int",
+			"Integer",
+			"i",
+			"10000",
+			"Runnable",
+			"start",
+			"temp",
+			"8",
+			"4",
+			"p1",
+			"i",
+			"outloop",
+			"\n		",
+			"sum",
+			"getBoss",
+			"A",
+			"a",
+			"A",
+			"a",
+			"A",
+			"a",
+			"A",
+			"a",
+			"A",
+			"replaceAllTabsSpaces",
+			"\");\n",
+			"nextLine",
+			"PipedInputStream",
+			"PipedOutputStream",
+			"consumer",
+			"producer",
+			"t2",
+			"t1"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"MapHolder"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Java/JavaC.sublime-build",
+	"project": "AllianceButton.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
