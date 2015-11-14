@@ -1,66 +1,70 @@
+<<<<<<< HEAD
 package com.qualcomm.ftcrobotcontroller.IronKittensFTC_2015;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.*;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.DcMotorController;
+=======
+import com.qualcomm.robotcore.hardware.*;
+>>>>>>> origin/master
 
 
 public class Climber
 {
+
+	public static final String ELEVATOR_MOTOR = "elevatorMotor";
+
+	public static final String DUMP_SERVO = "dumpServo";
+
+	public static final double DUMP_POSITION = 100, UP_POSITION = 10;
+
+	public static final double PLATFORM_DOWN = 100, PLATFORM_UP = 10;
+	
 	public DcMotor elevatorMotor;
 	public Servo dumpServo;
 
-		
-	public static final double DUMP_POSITION = 100;
-	public static final double UP_POSITION = 10;
-	public static final double PLATFORM_DOWN = 100;
-	public static final double PLATFORM_UP = 10;
-
 	public Climber(HardwareMap hardwareMap)
 	{
-		elevatorMotor = hardwareMap.dcMotor.get("elevatorMotor");
-		dumpServo = hardwareMap.Servo.get("dumpServo");
-	}
-	void setMotorPower(int Motor, double power)
-	{
-		
+		elevatorMotor = hardwareMap.dcMotor.get(ELEVATOR_MOTOR);
+		dumpServo = hardwareMap.servo.get(DUMP_SERVO);
 	}
 	
 	public void lowerPlatform()
 	{
+		elevatorMotor.setDirection(DcMotor.Direction.FORWARD); // change directions if necessary
    		elevatorMotor.setMotorPower(0.75);
-		if (elevatormotor.getcurrentposition() < PLATFORM_DOWN)
+		while (elevatorMotor.getCurrentPosition() < PLATFORM_DOWN) // change boolean operator if necessary
 		{
-			elevatorMotor.setMotorPower(0);
+
 		}
+		elevatorMotor.setMotorPower(0);
     } 
    	
    	public void raisePlatform()
    	{
+<<<<<<< HEAD
 		elevatorMotor.setMotorPower(0.75);
 		if (elevatorMotor.getcurrentposition() > PLATFORM_UP)
+=======
+   		elevatorMotor.setDirection(DcMotor.Direction.REVERSE); 
+		elevatorMotor.setMotorPower(0.75)
+		while (elevatorMotor.getCurrentPosition() > PLATFORM_UP)
+>>>>>>> origin/master
 		{
-			elevatorMotor.setMotorPower(0);
-		}
-   	}
-	
-	void setServoPosition(int channel, double position)
-	{
 
-	}  
-    
+		}
+		elevatorMotor.setMotorPower(0);
+   	}
+	    
     public void dumpPlatform()
     {
-		dumpServo.setServoPosition(DUMP_POSITION); //value needs to be confirmed
+		dumpServo.setServoPosition(DUMP_POSITION);
 	}
 
     public void resetPlatform()
 	{
 		dumpServo.setServoPosition(UP_POSITION);
     }
-	   
-//elevatormotor.getcurrentposition
-	
 
 }
 
