@@ -12,21 +12,34 @@ To log a message, use the method `DbgLog.msg("your message")`. DbgLog is found i
 ##Autonomous Stuff/Info
 
 Start
-107" to button color thing
-50 degrees counter clockwise to button thing
+107" to Alliance Button
+50 degrees counter clockwise to line up with Alliance Buttons
 Press button go
 
-Case one:
+Case one(Same-side Mountain)
 Backwards 31"
-Rotate cc 50 degrees 
+Rotate counter-clockwise 50 degrees 
 Climb mountain go 
 
-Case two:
+Case two(Opposite-side Mountain)
 69.75" back from color button
 131 degrees clockwise
 Climb mountain go
 
+Case three(Straight to Same-side Mountain)
+45 degrees start off wall
+81.5" forward to line up with mountain
+90 degrees turn counter-clockwise to line up with mountain
+
+Case four(Straight to Opposite-side Mountain)
+45 degrees start off wall
+52.1" forward to line up with opposite mountain
+90 degrees turn to line up with mountain
+
 THIS IS FOR RED TEAM
+
+Start
+107" to Alliance Button
 
 Other info:
 33.9" one tile diagonal
