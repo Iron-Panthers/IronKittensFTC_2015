@@ -35,6 +35,7 @@ public class AllianceButton {
 	public static final double INSPECTION_DIST = 3;
 
 	private DriveAuto drive;
+	private Climber climber;
 	private DcMotor motorL, motorR;
 	private UltrasonicSensor ultrasonic;
 	private TouchSensor touch;
@@ -46,13 +47,14 @@ public class AllianceButton {
 		@param hwm The HardwareMap object that the hardware is sourced from.
 		@param team Which alliance the robot is on
 	*/
-	public AllianceButton(DriveAuto drive, HardwareMap hwm, AllianceColor team) {
+	public AllianceButton(DriveAuto drive, Climber climber, HardwareMap hwm, AllianceColor team) {
 		this.ultrasonic = hwm.ultrasonicSensor.get(ULTRASONIC_SENSOR);
 		this.touch = hwm.touch.get(TOUCH_SENSOR);
 		this.motorL = hwm.dcMotor.get(MOTOR_LEFT);
 		this.motorR = hwm.dcMotor.get(MOTOR_RIGHT);
 		this.color = hwm.colorSensor.get(COLOR_SENSOR);
 		this.drive = drive;
+		this.climber = climber;
 		this.teamColor = teamColor;
 	}
 
@@ -129,6 +131,9 @@ public class AllianceButton {
 
 		}
 		setPower(0);
+
+		climber.lowerPlatform();
+		climber.raisePlatform();
 
 		moveUntilDistance(TURNING_BUFFER_DIST, SLOW, DcMotor.Direction.REVERSE);
 
