@@ -1,103 +1,171 @@
-package com.qualcomm.ftcrobotcontroller.IronKittensFTC_2015;
+com.qualcomm.ftcrobotcontroller.IronKittensFTC_2015;
 
 import com.qualcomm.robotcore.hardware.*;
 
 /**
 	Alliance Button utilities by Maxim
-**/
+*/
 public class AllianceButton {
 
-    /** the ultrasonic sensor id **/
-    public static final String ULTRASONIC = "ultrasonic";
+	/** the ultrasonic sensor id **/
+	public static final String ULTRASONIC_SENSOR = "ultrasonic";
 
-    /** the color sensor id **/
-    public static final String COLOR_SENSOR = "color";
+	/** the color sensor id **/
+	public static final String COLOR_SENSOR = "color";
 
-    /** the motor id **/
-    public static final String MOTOR_LEFT = "motor_left", MOTOR_RIGHT = "motor_right";
+	/** the touch sensor id **/
+	public static final String TOUCH_SENSOR = "touch";
 
-    /** drive speed **/
-    public static final double SLOW = 0.25;
+	/** the motor id **/
+	public static final String MOTOR_LEFT = "motor_left", MOTOR_RIGHT = "motor_right";
 
-    /** distance between buttons (inches) **/
-    public static final double BUTTON_DIST=3;
+	/** drive speed **/
+	public static final double SLOW = 0.25;
 
-    /** pressing threshold (inches) **/
-    public static final double BUTTON_PRESS=3/2.54d;
+	/** distance it starts at (inches) **/
+	public static final double START_DIST = 23;
 
-    /** buffer distance (inches) **/
-    public static final double BUFFER_DIST=3;
+	/** distance between buttons (inches) **/
+	public static final double BUTTON_DIFFERENCE = 5.25;
 
-    private DriveAuto drive;
-    private DcMotor motorL, motorR;
-    private UltrasonicSensor ultrasonic;
-    private ColorSensor color;
-    private AllianceColor teamColor;
+	/** buffer distance for turning (inches) **/
+	public static final double TURNING_BUFFER_DIST = 3;
 
-    /**
-        @param drive The driving utilities
-        @param hwm The HardwareMap object that the hardware is sourced from.
-        @param team Which alliance the robot is on
-    */
-    public AllianceButton(DriveAuto drive, HardwareMap hwm, AllianceColor team) {
-        this.ultrasonic = hwm.ultrasonicSensor.get(ULTRASONIC);
-        this.motorL = hwm.dcMotor.get(MOTOR_LEFT);
-        this.motorR = hwm.dcMotor.get(MOTOR_RIGHT);
-        this.color = hwm.colorSensor.get(COLOR_SENSOR);
-        this.drive = drive;
-        this.teamColor = teamColor;
-    }
+	/** max distance for color inspection (inches) **/
+	public static final double INSPECTION_DIST = 3;
 
-    /**
-        Checks the color.
-        @return whether the detected color matches the alliance color
-    */
-    public boolean checkColor() {
-    	/*
-    	PSEUDOCODE:
-    	detected color = null
-    	hue = color.argb()
-    	if hue in blue range then color = blue
-    	if hue in red range then color = red
-    	return color == teamcolor
+	private DriveAuto drive;
+	private DcMotor motorL, motorR;
+	private UltrasonicSensor ultrasonic;
+	private TouchSensor touch;
+	private ColorSensor color;
+	private AllianceColor teamColor;
+
+	/**
+		@param drive The driving utilities
+		@param hwm The HardwareMap object that the hardware is sourced from.
+		@param team Which alliance the robot is on
+	*/
+	public AllianceButton(DriveAuto drive, HardwareMap hwm, AllianceColor team) {
+		this.ultrasonic = hwm.ultrasonicSensor.get(ULTRASONIC_SENSOR);
+		this.touch = hwm.touch.get(TOUCH_SENSOR);
+		this.motorL = hwm.dcMotor.get(MOTOR_LEFT);
+		this.motorR = hwm.dcMotor.get(MOTOR_RIGHT);
+		this.color = hwm.colorSensor.get(COLOR_SENSOR);
+		this.drive = drive;
+		this.teamColor = teamColor;
+	}
+
+	/**
+		Run the color checking sequence. Make sure that the robot is at the proper
+		position prior to calling this method!
+	**/
+	public void execute() {
+		moveToInspection();
+		if (checkColor()) {
+			hitButton();
+		} else {
+			swapLight();
+			moveToInspection();
+			if (checkColor()) {
+				hitButton();
+			}
+			resetPositionFromRight();
+		}
+		moveUntilDistance(START_DIST, SLOW, DcMotor.Direction.REVERSE);
+	}
+
+	/**
+		Checks the color.
+		@return whether the detected color matches the alliance color
+	*/
+	public boolean checkColor() {
+		/*
+		PSEUDOCODE:
+		detected color = null
+		hue = color.argb()
+		if hue in blue range then color = blue
+		if hue in red range then color = red
+		return color == teamcolor
 		*/
-        return false;
-    }
+		return false;
+	}
 
-    /**
-        Changes the light it is on.
-    */
-    public void swapLight() {
-    	drive.turn(90);
-    	drive.driveStraight(BUTTON_DIST, SLOW);
-    	drive.turn(-90);
-    }
+	/**
+		Moves to a good turning distance and changes from left button to right button. 
+	*/
+	public void swapLight() {
+		moveUntilDistance(TURNING_BUFFER_DIST, SLOW, DcMotor.Direction.FORWARD);
+		drive.turnRight(90);
+		drive.driveStraight(BUTTON_DIFFERENCE, SLOW);
+		drive.turnLeft(90);
+	}
 
-    /**
-        Drives forward to hit the button.
-    */
-    public void hitButton() {
+	/**
+		Move to the robot's starting position from the right side.
+	*/
+	public void resetPositionFromRight() {
+		moveUntilDistance(TURNING_BUFFER_DIST, SLOW, DcMotor.Direction.REVERSE);
+		drive.turnLeft(90);
+		drive.driveStraight(BUTTON_DIFFERENCE, SLOW);
+		drive.turnRight(90);
+	}
 
-        motorL.setDirection(DcMotor.Direction.FORWARD);
-        motorR.setDirection(DcMotor.Direction.FORWARD);
+	/**
+		Move to the checking distance.
+	*/
+	public void moveToInspection() {
+		moveUntilDistance(INSPECTION_DIST, SLOW, DcMotor.Direction.FORWARD);
+	}
 
-        motorL.setPower(SLOW);
-        motorR.setPower(SLOW);
+	/**
+		Drives forward to hit the button, then moves to turning buffer distance.
+	*/
+	public void hitButton() {
 
-    	while (ultrasonic.getUltrasonicLevels() <= BUTTON_PRESS) {
+		setDirection(DcMotor.Direction.FORWARD);
+		setPower(SLOW);
+		while (!touch.isPressed()) {
 
-        }
+		}
+		setPower(0);
 
-        motorL.setDirection(DcMotor.Direction.REVERSE);
-        motorR.setDirection(DcMotor.Direction.REVERSE);
+		moveUntilDistance(TURNING_BUFFER_DIST, SLOW, DcMotor.Direction.REVERSE);
 
-    	while (ultrasonic.getUltrasonicLevels() >= BUFFER_DIST) {
+	}
 
-        }
+	/**
+		Moves the robot until the sensor is at a certain distance.
+		@param dist distance, in inches
+		@param power the power of the motors
+		@param direction the direction to move in
+	*/
+	public void moveUntilDistance(double dist, double power, DcMotor.Direction direction) {
+		dist *= 2.54;
+		boolean isForward = direction == DcMotor.Direction.FORWARD;
+		setDirection(direction);
+		setPower(power);
+		while (isForward ? (checkDist() <= dist) : (checkDist() >= dist)) {
 
-        motorL.setPower(0);
-        motorR.setPower(0);
+		}
+		setPower(0);
+	}
 
-    }
+	/**
+		I'm too lazy to type out that big method name
+	*/
+	public void checkDist() {
+		return ultrasonic.getUltrasonicLevels();
+	}
+
+	private void setDirection(DcMotor.Direction direction) {
+		motorL.setDirection(direction);
+		motorR.setDirection(direction);
+	}
+
+	private void setPower(double power) {
+		motorL.setPower(0);
+		motorR.setPower(0);
+	}
 
 }
