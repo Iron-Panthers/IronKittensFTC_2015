@@ -3,8 +3,8 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 import com.qualcomm.robotcore.hardware.DcMotor;
 //import com.qualcomm.ftccommon.DbgLog;
 
-public class KittenRobot extends PushBotTelemetry
-{
+public class KittenRobot extends PushBotTelemetry {
+
     public DcMotor frontLeftMotor;
     public DcMotor backLeftMotor;
 
@@ -14,16 +14,14 @@ public class KittenRobot extends PushBotTelemetry
     public Climber climber;
     public Zipline zipline;
     public DriveAuto driveAuto;
-    public Joystick joystick;
+    //public Joystick gamepad1;
 
-    public KittenRobot(){}
-
-    @Override public void init()
-    {
+    @Override 
+    public void init() {
         climber = new Climber(hardwareMap);
         zipline = new Zipline(hardwareMap);
         driveAuto = new DriveAuto(hardwareMap);
-        joystick = new Joystick(gamepad1);
+        //gamepad1 = new Joystick(gamepad1);
 
         zipline.resetServos();
         climber.lowerElevator();
@@ -31,36 +29,31 @@ public class KittenRobot extends PushBotTelemetry
         climber.resetPlatform();
     }
 
-    @Override public void loop()
-    {
-        frontLeftMotor.setPower(-joystick.leftStickY() * 0.457); //wheel ratio of rear wheel diameter to front wheel diameter
-        backLeftMotor.setPower(-joystick.leftStickY());
+    @Override 
+    public void loop() {
+        frontLeftMotor.setPower(-gamepad1.left_stick_y * 0.457); //wheel ratio of rear wheel diameter to front wheel diameter
+        backLeftMotor.setPower(-gamepad1.left_stick_y;
 
-        frontRightMotor.setPower(joystick.rightStickY() * 0.457);
-        backRightMotor.setPower(joystick.rightStickY());
+        frontRightMotor.setPower(gamepad1.right_stick_y * 0.457);
+        backRightMotor.setPower(gamepad1.right_stick_y);
 
-        if(joystick.leftBumper())
-        {
+        if(gamepad1.left_bumper) {
             zipline.toggleLeft();
         }
 
-        if(joystick.rightBumper())
-        {
+        if(gamepad1.right_bumper) {
             zipline.toggleRight();
         }
 
-        if(joystick.yButton())
-        {
+        if(gamepad1.y) {
             climber.toggleElevator();
         }
 
-        if(joystick.xButton())
-        {
+        if(gamepad1.x) {
             climber.togglePlatform();
         }
 
-        if(joystick.backButton()) //just in case to reset all servos and elevator motor
-        {
+        if(gamepad1.back) { //just in case to reset all servos and elevator motor
             climber.lowerElevator();
             climber.resetPlatform();
         }
