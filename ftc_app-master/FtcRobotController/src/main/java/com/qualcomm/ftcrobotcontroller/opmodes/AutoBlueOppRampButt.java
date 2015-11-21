@@ -1,4 +1,4 @@
-public class AutoBlueOppRampButt
+/*public class AutoBlueOppRampButt
 {
 	BluePush bluePush;
 	DriveAuto driveAuto;
@@ -15,3 +15,4 @@ public class AutoBlueOppRampButt
 		driveAuto.driveStraight(40, 0.5);
 		mountain.climb();
 }
+*/

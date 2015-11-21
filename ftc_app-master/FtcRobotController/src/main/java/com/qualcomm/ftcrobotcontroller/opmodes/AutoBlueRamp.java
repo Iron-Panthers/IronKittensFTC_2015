@@ -1,4 +1,4 @@
-public class AutoBlueRamp
+/*public class AutoBlueRamp
 {
 	DriveAuto driveAuto;
 	Mountain mountain;
@@ -13,3 +13,4 @@ public class AutoBlueRamp
 		mountain.climb();
 	}
 }
+*/

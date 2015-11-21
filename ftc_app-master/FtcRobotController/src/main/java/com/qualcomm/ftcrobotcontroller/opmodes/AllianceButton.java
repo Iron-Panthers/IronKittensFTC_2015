@@ -94,6 +94,7 @@ public class AllianceButton {
 
 		int hue = color.argb();
 
+		/*
 		if(hue  == range of alliance color)
         {
             return true;
@@ -102,6 +103,8 @@ public class AllianceButton {
         {
             return false;
         }
+        */
+		return false;
 	}
 
 	/**
@@ -167,8 +170,8 @@ public class AllianceButton {
 	/**
 		I'm too lazy to type out that big method name
 	*/
-	public void checkDist() {
-		return ultrasonic.getUltrasonicLevels();
+	public double checkDist() {
+		return ultrasonic.getUltrasonicLevel();
 	}
 
 	private void setDirection(DcMotor.Direction direction) {

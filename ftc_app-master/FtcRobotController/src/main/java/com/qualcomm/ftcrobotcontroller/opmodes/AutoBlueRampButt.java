@@ -1,4 +1,4 @@
-public class AutoBlueRampButt
+/*public class AutoBlueRampButt
 {
 	BluePush bluePush;
 	DriveAuto driveAuto;
@@ -16,3 +16,4 @@ public class AutoBlueRampButt
 		mountain.climb();
 	}
 }
+*/

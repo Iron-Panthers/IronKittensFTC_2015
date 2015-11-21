@@ -1,3 +1,6 @@
+import com.qualcomm.ftcrobotcontroller.opmodes.AllianceButton;
+import com.qualcomm.ftcrobotcontroller.opmodes.DriveAuto;
+/*
 public class Mountain
 {
 	AllianceButton allianceButton = new AllianceButton();
@@ -17,4 +20,4 @@ public class Mountain
 			driveAuto.driveStraight(-1, 1);
 		}
 	}
-}
+}*/

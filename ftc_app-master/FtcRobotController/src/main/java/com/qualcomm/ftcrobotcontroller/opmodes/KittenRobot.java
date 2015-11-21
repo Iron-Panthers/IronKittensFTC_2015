@@ -32,10 +32,10 @@ public class KittenRobot extends PushBotTelemetry {
     @Override 
     public void loop() {
         frontLeftMotor.setPower(-gamepad1.left_stick_y * 0.457); //wheel ratio of rear wheel diameter to front wheel diameter
-        backLeftMotor.setPower(-gamepad1.left_stick_y;
+        backLeftMotor.setPower(-gamepad1.left_stick_y * 0.457);
 
         frontRightMotor.setPower(gamepad1.right_stick_y * 0.457);
-        backRightMotor.setPower(gamepad1.right_stick_y);
+        backRightMotor.setPower(gamepad1.right_stick_y * 0.457);
 
         if(gamepad1.left_bumper) {
             zipline.toggleLeft();

@@ -10,11 +10,11 @@ public class Zipline
     public static final String LEFT_CLIMBER_SERVO = "leftClimberServo";
     public static final String RIGHT_CLIMBER_SERVO = "rightClimberServo";
 
-    private static final double LEFT_OUT_POSITION = 1.0; //for leftClimberServo
-    private static final double LEFT_IN_POSITION = 0.5; //for leftClimberServo
+    private static final double LEFT_OUT_POSITION = 0.5; //for leftClimberServo
+    private static final double LEFT_IN_POSITION = 0.0; //for leftClimberServo
 
-    private static final double RIGHT_OUT_POSITION = 0.0; //for rightClimberServo
-    private static final double RIGHT_IN_POSITION = 0.5; //for rightClimberServo
+    private static final double RIGHT_OUT_POSITION = 0.5; //for rightClimberServo
+    private static final double RIGHT_IN_POSITION = 1.0; //for rightClimberServo
 
     public boolean leftOut = false;
     public boolean rightOut = false;
