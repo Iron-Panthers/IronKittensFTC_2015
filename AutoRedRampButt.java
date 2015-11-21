@@ -12,7 +12,7 @@ public class AutoRedRampButt
 		redPush.go();
 		driveAuto.driveStraight(-31, 0.5);
 		driveAuto.turnLeft(50);
-		driveAuto.driveStraight(32.68. 0.5);
+		driveAuto.driveStraight(32.68, 0.5);
 		while(true)
 		{
 			driveAuto.driveStraight(1, 1);
