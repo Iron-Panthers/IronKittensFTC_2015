@@ -10,8 +10,8 @@ public class Climber
 	public static final String ELEVATOR_MOTOR = "elevatorMotor";
 	public static final String DUMP_SERVO = "dumpServo";
 
-	public static final double DUMP_POSITION = 100; //for dumpServo
-	public static final double UP_POSITION = 10; //for dumpServo
+	public static final double DUMP_POSITION = 0.0; //for dumpServo
+	public static final double UP_POSITION = 0.50; //for dumpServo
 
 	public static final double PLATFORM_HEIGHT = 50; //for elevatorMotor
 
@@ -21,7 +21,7 @@ public class Climber
 	public Climber(HardwareMap hardwareMap)
 	{
 		elevatorMotor = hardwareMap.dcMotor.get(ELEVATOR_MOTOR);
-		//dumpServo = hardwareMap.servo.get(DUMP_SERVO);
+		dumpServo = hardwareMap.servo.get(DUMP_SERVO);
 	}
 	
 	public void lowerElevator()
@@ -33,6 +33,7 @@ public class Climber
 			elevatorMotor.setPower(1.0); //need to determine direction
 		}
 		elevatorMotor.setPower(0);
+        elevatorUp = false;
     } 
    	
    	public void raiseElevator()
@@ -44,6 +45,7 @@ public class Climber
 			elevatorMotor.setPower(-1.0); //need to determine direction
 		}
 		elevatorMotor.setPower(0);
+        elevatorUp = true;
 	}
 
 	public void toggleElevator() //initialize platform to up/down somewhere
@@ -51,19 +53,11 @@ public class Climber
 		if(elevatorUp)
 		{
 			lowerElevator();
-			elevatorUp = false;
 		}
 		else
 		{
 			raiseElevator();
-			elevatorUp = true;
 		}
-	}
-
-	public void resetElevator() //elevator reset position up?
-	{
-		raiseElevator();
-		elevatorUp = true;
 	}
 
 	public void togglePlatform() //needs platform position set during initialization

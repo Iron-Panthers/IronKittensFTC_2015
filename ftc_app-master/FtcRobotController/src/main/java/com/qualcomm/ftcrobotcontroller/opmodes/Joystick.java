@@ -2,12 +2,8 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-/**
- * Created by ibm on 11/4/2015.
- */
 public class Joystick {
     public Gamepad gamepad;
-    public float yJoystickScale = (float)0.75;
 
     public Joystick(Gamepad gamepad){
         this.gamepad = gamepad;
@@ -22,18 +18,20 @@ public class Joystick {
     }
 
     public float leftStickY(){
-        return yJoystickScale*gamepad.left_stick_y;
+        return gamepad.left_stick_y;
     }
 
     public float rightStickY(){
-        return yJoystickScale*gamepad.right_stick_y;
+        return gamepad.right_stick_y;
     }
 
-    public float leftTrigger(){
-        return gamepad.left_trigger;
-    }
+    public boolean leftBumper() { return gamepad.left_bumper; }
 
-    public float rightTrigger(){
-        return gamepad.right_trigger;
-    }
+    public boolean rightBumper() { return gamepad.right_bumper; }
+
+    public boolean yButton() { return gamepad.y; }
+
+    public boolean xButton() { return gamepad.x;}
+
+    public boolean backButton() { return gamepad.back;}
 }

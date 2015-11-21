@@ -1,4 +1,4 @@
-com.qualcomm.ftcrobotcontroller.IronKittensFTC_2015;
+package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.hardware.*;
 
@@ -49,20 +49,21 @@ public class AllianceButton {
 	*/
 	public AllianceButton(DriveAuto drive, Climber climber, HardwareMap hwm, AllianceColor team) {
 		this.ultrasonic = hwm.ultrasonicSensor.get(ULTRASONIC_SENSOR);
-		this.touch = hwm.touch.get(TOUCH_SENSOR);
+		this.touch = hwm.touchSensor.get(TOUCH_SENSOR); //touchSensorMultiplexer if NXT sensor
 		this.motorL = hwm.dcMotor.get(MOTOR_LEFT);
 		this.motorR = hwm.dcMotor.get(MOTOR_RIGHT);
 		this.color = hwm.colorSensor.get(COLOR_SENSOR);
+
 		this.drive = drive;
 		this.climber = climber;
-		this.teamColor = teamColor;
+		this.teamColor = team;
 	}
 
 	/**
 		Run the color checking sequence. Make sure that the robot is at the proper
 		position prior to calling this method!
 	**/
-	public void execute() {
+	public void runAllianceButton() {
 		moveToInspection();
 		if (checkColor()) {
 			hitButton();
@@ -90,7 +91,17 @@ public class AllianceButton {
 		if hue in red range then color = red
 		return color == teamcolor
 		*/
-		return false;
+
+		int hue = color.argb();
+
+		if(hue  == range of alliance color)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 	}
 
 	/**
@@ -131,9 +142,6 @@ public class AllianceButton {
 
 		}
 		setPower(0);
-
-		climber.lowerPlatform();
-		climber.raisePlatform();
 
 		moveUntilDistance(TURNING_BUFFER_DIST, SLOW, DcMotor.Direction.REVERSE);
 

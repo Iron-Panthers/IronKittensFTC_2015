@@ -9,10 +9,10 @@ public class DriveAuto
     public DcMotor backLeft;
     public DcMotor backRight;
 
-    public static final double FRONT_WHEEL_DIAMETER = 7; 
-	public static final double BACK_WHEEL_DIAMETER = 4;
+    //public static final double FRONT_WHEEL_DIAMETER = 7;
+	public static final double BACK_WHEEL_DIAMETER = 4; //inches
 	public static final double ROBOT_WIDTH = 18;
-	public static final double FRONT_WHEEL_RATIO = 0.457;
+	public static final double FRONT_WHEEL_RATIO = 0.457; //back wheel diameter divided by front wheel diameter
 
 	public DriveAuto(HardwareMap hardwareMap)
 	{
@@ -22,7 +22,7 @@ public class DriveAuto
 		backRight = hardwareMap.dcMotor.get("backRight");
 	}
 
-	public void driveStraight(double distance, double speed) //distance is in inches
+	public void driveStraight(double distance, double power) //distance in inches
 	{
 		double targetValue = distance/(BACK_WHEEL_DIAMETER * Math.PI);
 		double leftStart = backLeft.getCurrentPosition();
@@ -33,10 +33,10 @@ public class DriveAuto
 
 		while((backLeft.getCurrentPosition() < leftTargetValue) && (backRight.getCurrentPosition() < rightTargetValue))
 		{
-			backLeft.setPower(speed);
-			backRight.setPower(speed);
-			frontLeft.setPower(speed * FRONT_WHEEL_RATIO);
-			frontRight.setPower(speed * FRONT_WHEEL_RATIO);
+			backLeft.setPower(power);
+			backRight.setPower(power);
+			frontLeft.setPower(power * FRONT_WHEEL_RATIO);
+			frontRight.setPower(power * FRONT_WHEEL_RATIO);
 		}
 
 		backLeft.setPower(0);
