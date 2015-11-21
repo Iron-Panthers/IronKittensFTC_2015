@@ -1,11 +1,14 @@
 public class AutoBlueRampButt
 {
-	BluePush bluePush = new BluePush();
-	DriveAuto driveAuto = new DriveAuto();
-	Mountain mountain = new Mountain();
+	BluePush bluePush;
+	DriveAuto driveAuto;
+	Mountain mountain;
 
 	public void execute() 
 	{
+		bluePush = new BluePush();
+		driveAuto = new DriveAuto();
+		mountain = new Mountain();
 		bluePush.go();
 		driveAuto.driveStraight(-69.75,0.5);
 		driveAuto.turnLeft(50);
