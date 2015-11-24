@@ -1,6 +1,9 @@
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.hardware.*;
+import com.qualcomm.hardware.HiTechnicNxtDcMotorController;
+import com.qualcomm.robotcore.hardware.DcMotorController.DeviceMode;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class Climber
 {
@@ -18,34 +21,48 @@ public class Climber
 	public boolean elevatorUp = true;
 	public boolean platformUp = true;
 
+    ElapsedTime timer;
+
 	public Climber(HardwareMap hardwareMap)
 	{
 		elevatorMotor = hardwareMap.dcMotor.get(ELEVATOR_MOTOR);
+
 		dumpServo = hardwareMap.servo.get(DUMP_SERVO);
+
+        timer = new ElapsedTime();
+
+       /* DcMotorController elevatorController;
+        elevatorController = hardwareMap.dcMotorController.get("elevatorController");
+        elevatorController.setMotorControllerDeviceMode(DcMotorController.DeviceMode.READ_ONLY); */
 	}
 	
 	public void lowerElevator()
-	{
-		double finalPosition = elevatorMotor.getCurrentPosition() - PLATFORM_HEIGHT;
-
+    {
+        //STUFF GETS CHANGED BELOW HERE
+        /*
+		double finalPosition = elevatorMotor.getCurrentPosition() - PL      ATFORM_HEIGHT;
 		while (elevatorMotor.getCurrentPosition() > finalPosition)
 		{
 			elevatorMotor.setPower(1.0); //need to determine direction
 		}
 		elevatorMotor.setPower(0);
         elevatorUp = false;
+        //STUFF GOT CHANGED ABOVE HERE
+        */
+        elevatorMotor.setPower(1);
     } 
    	
    	public void raiseElevator()
 	{
-		double finalPosition = elevatorMotor.getCurrentPosition() + PLATFORM_HEIGHT;
+		/*double finalPosition = elevatorMotor.getCurrentPosition() + PLATFORM_HEIGHT;
 
 		while (elevatorMotor.getCurrentPosition() < finalPosition)
 		{
 			elevatorMotor.setPower(-1.0); //need to determine direction
 		}
 		elevatorMotor.setPower(0);
-        elevatorUp = true;
+        elevatorUp = true;*/
+        elevatorMotor.setPower(-1);
 	}
 
 	public void toggleElevator() //initialize platform to up/down somewhere
@@ -62,16 +79,17 @@ public class Climber
 
 	public void togglePlatform() //needs platform position set during initialization
 	{
-		if(platformUp)
-		{
-			dumpServo.setPosition(DUMP_POSITION);
-			platformUp = false;
-		}
-		else
-		{
-			dumpServo.setPosition(UP_POSITION);
-			platformUp = true;
-		}
+        if(timer.time() > 0.5) {
+            if (platformUp) {
+                dumpServo.setPosition(DUMP_POSITION);
+                platformUp = false;
+                timer.reset();
+            } else {
+                dumpServo.setPosition(UP_POSITION);
+                platformUp = true;
+                timer.reset();
+            }
+        }
 	}
 
 	public void resetPlatform()

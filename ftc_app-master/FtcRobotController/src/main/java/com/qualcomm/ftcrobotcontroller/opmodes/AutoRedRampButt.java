@@ -1,4 +1,5 @@
-//this is numero uno red push + mount
+/*package com.qualcomm.ftcrobotcontroller.opmodes;
+
 
 public class AutoRedRampButt
 {
@@ -11,11 +12,11 @@ public class AutoRedRampButt
 		redPush.go();
 		driveAuto.driveStraight(-31, 0.5);
 		driveAuto.turnLeft(50);
-		while(allianceButton.checkDist() < /*enter value*/)
+		while(allianceButton.checkDist() < 10.0)
 		{
 			driveAuto.driveStraight(1, 1);
 		}
 
 		// ROBOT is on mountain now
 	}
-}
+}*/
