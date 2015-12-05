@@ -1,7 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
-//import com.qualcomm.ftccommon.DbgLog;
+import com.qualcomm.robotcore.hardware.*;
+import com.qualcomm.ftccommon.DbgLog;
 
 public class KittenRobot extends PushBotTelemetry
 {
@@ -13,6 +13,7 @@ public class KittenRobot extends PushBotTelemetry
 
     public Climber climber;
     public Zipline zipline;
+    public Catapult catapult;
     //public DriveAuto driveAuto;
 
     public KittenRobot(){}
@@ -21,12 +22,13 @@ public class KittenRobot extends PushBotTelemetry
     {
         climber = new Climber(hardwareMap);
         zipline = new Zipline(hardwareMap);
+        catapult = new Catapult(hardwareMap);
         //driveAuto = new DriveAuto(hardwareMap);
 
         zipline.resetServos();
         /*climber.lowerElevator();
-        climber.elevatorUp = false;
-        climber.resetPlatform();*/
+        climber.elevatorUp = false;*/
+        climber.resetPlatform();
         frontLeftMotor = hardwareMap.dcMotor.get("frontLeft");
         frontRightMotor = hardwareMap.dcMotor.get("frontRight");
         backLeftMotor = hardwareMap.dcMotor.get("backLeft");
@@ -51,12 +53,12 @@ public class KittenRobot extends PushBotTelemetry
             zipline.toggleRight();
         }
 
-        if(gamepad1.y)
+        if(gamepad1.left_trigger > 0.1)
         {
            climber.raiseElevator();
         }
 
-        if(gamepad1.x)
+        if(gamepad1.right_trigger > 0.1)
         {
             climber.lowerElevator();
         }
@@ -66,10 +68,26 @@ public class KittenRobot extends PushBotTelemetry
             climber.togglePlatform();
         }
 
-        if(gamepad1.back) //just in case to reset all servos and elevator motor
+        if(gamepad1.x)
         {
-            climber.elevatorMotor.setPower(0);
+            catapult.toggleCatapult();
         }
+
+        if(gamepad1.y)
+        {
+            catapult.runCatapult();
+        }
+        else
+        {
+            catapult.stopCatapult();
+            climber.stopElevator();
+        }
+
+        /*if(gamepad1.back) //just in case to reset all servos and elevator motor
+        {
+            climber.elevatorController.setMotorControllerDeviceMode(DcMotorController.DeviceMode.WRITE_ONLY);
+            climber.elevatorMotor.setPower(0);
+        }*/
 
     }
 }

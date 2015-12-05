@@ -1,25 +1,24 @@
-/*package com.qualcomm.ftcrobotcontroller.opmodes;
+/** package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.hardware.*;
 
-/**
 	Alliance Button utilities by Maxim
 
 public class AllianceButton {
 
-	/** the ultrasonic sensor id
+	//the ultrasonic sensor id
 	public static final String ULTRASONIC_SENSOR = "ultrasonic";
 
-	/** the color sensor id
+	/**the color sensor id
 	public static final String COLOR_SENSOR = "color";
 
-	/** the touch sensor id
+	/**the touch sensor id
 	public static final String TOUCH_SENSOR = "touch";
 
-	/** the motor id *
+	the motor id *
 	public static final String MOTOR_LEFT = "motor_left", MOTOR_RIGHT = "motor_right";
 
-	/** drive speed *
+	drive speed *
 	public static final double SLOW = 0.25;
 
 	/** distance it starts at (inches) *
@@ -35,7 +34,7 @@ public class AllianceButton {
 	public static final double INSPECTION_DIST = 3;
 
 	private DriveAuto drive;
-	//private Climber climber;
+	private Climber climber;
 	private DcMotor motorL, motorR;
 	private UltrasonicSensor ultrasonic;
 	private TouchSensor touch;

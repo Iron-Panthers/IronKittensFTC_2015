@@ -13,14 +13,15 @@ public class Climber
 	public static final String ELEVATOR_MOTOR = "elevatorMotor";
 	public static final String DUMP_SERVO = "dumpServo";
 
-	public static final double DUMP_POSITION = 0.0; //for dumpServo
-	public static final double UP_POSITION = 0.50; //for dumpServo
+	public static final double DUMP_POSITION = 1.0; //for dumpServo
+	public static final double UP_POSITION = 0.4; //for dumpServo
 
-	public static final double PLATFORM_HEIGHT = 50; //for elevatorMotor
+	public static final double PLATFORM_HEIGHT = 10; //for elevatorMotor
 
 	public boolean elevatorUp = true;
 	public boolean platformUp = true;
 
+    //DcMotorController elevatorController;
     ElapsedTime timer;
 
 	public Climber(HardwareMap hardwareMap)
@@ -31,38 +32,46 @@ public class Climber
 
         timer = new ElapsedTime();
 
-       /* DcMotorController elevatorController;
-        elevatorController = hardwareMap.dcMotorController.get("elevatorController");
-        elevatorController.setMotorControllerDeviceMode(DcMotorController.DeviceMode.READ_ONLY); */
+        //elevatorController = hardwareMap.dcMotorController.get("elevatorController");
 	}
-	
+
 	public void lowerElevator()
     {
         //STUFF GETS CHANGED BELOW HERE
-        /*
-		double finalPosition = elevatorMotor.getCurrentPosition() - PL      ATFORM_HEIGHT;
+       /* elevatorController.setMotorControllerDeviceMode(DcMotorController.DeviceMode.READ_ONLY);
+
+		double finalPosition = elevatorMotor.getCurrentPosition() - PLATFORM_HEIGHT;
 		while (elevatorMotor.getCurrentPosition() > finalPosition)
 		{
-			elevatorMotor.setPower(1.0); //need to determine direction
+            elevatorController.setMotorControllerDeviceMode(DcMotorController.DeviceMode.WRITE_ONLY);
+			elevatorMotor.setPower(0.2); //need to determine direction
+            elevatorController.setMotorControllerDeviceMode(DcMotorController.DeviceMode.READ_ONLY);
 		}
+
+        elevatorController.setMotorControllerDeviceMode(DcMotorController.DeviceMode.WRITE_ONLY);
+
 		elevatorMotor.setPower(0);
         elevatorUp = false;
         //STUFF GOT CHANGED ABOVE HERE
-        */
-        elevatorMotor.setPower(1);
+*/
+        elevatorMotor.setPower(0.5);
     } 
    	
    	public void raiseElevator()
 	{
-		/*double finalPosition = elevatorMotor.getCurrentPosition() + PLATFORM_HEIGHT;
+        /*elevatorController.setMotorControllerDeviceMode(DcMotorController.DeviceMode.READ_ONLY);
+		double finalPosition = elevatorMotor.getCurrentPosition() + PLATFORM_HEIGHT;
 
 		while (elevatorMotor.getCurrentPosition() < finalPosition)
 		{
-			elevatorMotor.setPower(-1.0); //need to determine direction
+            elevatorController.setMotorControllerDeviceMode(DcMotorController.DeviceMode.WRITE_ONLY);
+			elevatorMotor.setPower(-0.2); //need to determine direction
+            elevatorController.setMotorControllerDeviceMode(DcMotorController.DeviceMode.READ_ONLY);
 		}
+        elevatorController.setMotorControllerDeviceMode(DcMotorController.DeviceMode.WRITE_ONLY);
 		elevatorMotor.setPower(0);
         elevatorUp = true;*/
-        elevatorMotor.setPower(-1);
+        elevatorMotor.setPower(-0.5);
 	}
 
 	public void toggleElevator() //initialize platform to up/down somewhere
@@ -84,7 +93,9 @@ public class Climber
                 dumpServo.setPosition(DUMP_POSITION);
                 platformUp = false;
                 timer.reset();
-            } else {
+            }
+			else
+			{
                 dumpServo.setPosition(UP_POSITION);
                 platformUp = true;
                 timer.reset();
@@ -94,7 +105,11 @@ public class Climber
 
 	public void resetPlatform()
 	{
-		dumpServo.setPosition((UP_POSITION));
+		dumpServo.setPosition(UP_POSITION);
 		platformUp = true;
+	}
+	public void stopElevator()
+	{
+		elevatorMotor.setPower(0);
 	}
 }
