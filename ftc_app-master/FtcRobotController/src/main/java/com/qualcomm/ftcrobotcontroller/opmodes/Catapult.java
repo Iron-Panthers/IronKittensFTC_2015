@@ -12,7 +12,7 @@ public class Catapult {
     public String CATAPULT_MOTOR = "catapultMotor";
 
     public static final double CATAPULT_UP_POSITION = 1.0;
-    public static final double CATAPULT_DOWN_POSITION = 0.5;
+    public static final double CATAPULT_DOWN_POSITION = 0.6;
 
     public boolean catapultExtend;
 
@@ -27,19 +27,25 @@ public class Catapult {
 
     public void extendCatapult()
     {
+        // IN POSITION
         catapultServo.setPosition(CATAPULT_UP_POSITION);
         catapultExtend = true;
     }
 
     public void retractCatapult()
     {
+        // OUT POSITION
         catapultServo.setPosition(CATAPULT_DOWN_POSITION);
         catapultExtend = false;
     }
 
-    public void runCatapult()
-    {
+    public void runCatapult() {
         catapultMotor.setPower(0.5);
+    }
+
+    public void reverseCatapult()
+    {
+        catapultMotor.setPower(-0.5);
     }
 
     public void stopCatapult()

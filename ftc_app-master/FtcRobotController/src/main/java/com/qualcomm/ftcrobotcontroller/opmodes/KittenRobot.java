@@ -3,8 +3,8 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 import com.qualcomm.robotcore.hardware.*;
 import com.qualcomm.ftccommon.DbgLog;
 
-public class KittenRobot extends PushBotTelemetry
-{
+public class KittenRobot extends PushBotTelemetry {
+
     public DcMotor frontLeftMotor;
     public DcMotor backLeftMotor;
 
@@ -18,14 +18,19 @@ public class KittenRobot extends PushBotTelemetry
 
     public KittenRobot(){}
 
-    @Override public void init()
-    {
+    public DriveAuto driveAuto;
+
+    public final static double CONST_WHEEL_DIST = 0.88;
+    //public Joystick gamepad1;
+
+    @Override 
+    public void init() {
         climber = new Climber(hardwareMap);
         zipline = new Zipline(hardwareMap);
         catapult = new Catapult(hardwareMap);
-        //driveAuto = new DriveAuto(hardwareMap);
 
         zipline.resetServos();
+        catapult.retractCatapult();
         /*climber.lowerElevator();
         climber.elevatorUp = false;*/
         climber.resetPlatform();
@@ -37,11 +42,11 @@ public class KittenRobot extends PushBotTelemetry
 
     @Override public void loop()
     {
-        frontLeftMotor.setPower(-gamepad1.left_stick_y * 0.457); //wheel ratio of rear wheel diameter to front wheel diameter
-        backLeftMotor.setPower(-gamepad1.left_stick_y);
+        frontLeftMotor.setPower(gamepad1.left_stick_y * 0.457 * CONST_WHEEL_DIST); //wheel ratio of rear wheel diameter to front wheel diameter
+        backLeftMotor.setPower(gamepad1.left_stick_y * CONST_WHEEL_DIST);
 
-        frontRightMotor.setPower(gamepad1.right_stick_y * 0.457);
-        backRightMotor.setPower(gamepad1.right_stick_y);
+        frontRightMotor.setPower(-gamepad1.right_stick_y * 0.457 * CONST_WHEEL_DIST);
+        backRightMotor.setPower(-gamepad1.right_stick_y * CONST_WHEEL_DIST);
 
         if(gamepad1.left_bumper)
         {
@@ -66,6 +71,11 @@ public class KittenRobot extends PushBotTelemetry
         if(gamepad1.a)
         {
             climber.togglePlatform();
+        }
+
+        if(gamepad1.b)
+        {
+            catapult.reverseCatapult();
         }
 
         if(gamepad1.x)

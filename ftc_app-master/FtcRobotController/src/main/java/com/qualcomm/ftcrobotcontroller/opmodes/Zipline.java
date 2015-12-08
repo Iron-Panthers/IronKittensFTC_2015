@@ -14,7 +14,8 @@ public class Zipline
     private static final double LEFT_OUT_POSITION = 0.4; //for leftClimberServo
     private static final double LEFT_IN_POSITION = 0.0; //for leftClimberServo
 
-    private static final double RIGHT_OUT_POSITION = 0.4; //for rightClimberServo
+    private static final double RIGHT_OUT_POSITION = 0.5; //for rightClimberServo
+
     private static final double RIGHT_IN_POSITION = 1.0; //for rightClimberServo
 
     public boolean leftOut = false;

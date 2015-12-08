@@ -1,6 +1,9 @@
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
 /*public class RedPush extends PushBotTelemetry
+=======
+/*public class BluePush
+>>>>>>> origin/master
 {
 	DriveAuto driveAuto = new DriveAuto(hardwareMap);
 	AllianceButton allianceButton = new AllianceButton(driveAuto);
@@ -12,4 +15,5 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 		allianceButton.runAllianceButton();
 	}
 
+<<<<<<< HEAD
 }*/

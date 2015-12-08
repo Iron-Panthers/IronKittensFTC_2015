@@ -1,6 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.hardware.*;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class DriveAuto
 {
@@ -92,5 +93,20 @@ public class DriveAuto
 		backRight.setPower(0);
 		frontLeft.setPower(0);
 		frontRight.setPower(0);
+	}
+	
+	public void wait(double seconds)
+	{
+		backLeft.setPower(0);
+		backRight.setPower(0);
+		frontLeft.setPower(0);
+		frontRight.setPower(0);
+		
+		ElapsedTime elapsedTime = new ElapsedTime();
+		elapsedTime.startTime();
+		/*while(elapsedTime.time < seconds)
+		{
+
+		}*/
 	}
 }

@@ -58,6 +58,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register("NullOp", NullOp.class);
 
     manager.register ("KittenRobot", KittenRobot.class);
+    manager.register("ZiplineTest", ZiplineServoTest.class);
     manager.register ("Autonomous", Autonomous.class);
     manager.register ("PushBotAuto", PushBotAuto.class);
 

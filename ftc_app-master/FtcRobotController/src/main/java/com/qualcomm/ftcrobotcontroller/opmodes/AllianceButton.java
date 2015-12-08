@@ -93,7 +93,12 @@ public class AllianceButton {
 
 		int hue = color.argb();
 
+<<<<<<< HEAD
 		if(hue < teamColor.max && hue > teamColor.min)
+=======
+		/*
+		if(hue  == range of alliance color)
+>>>>>>> origin/master
         {
             return true;
         }
@@ -101,7 +106,9 @@ public class AllianceButton {
         {
             return false;
         }
-	}
+        */
+		//return false;
+//	}
 
 	/**
 		Moves to a good turning distance and changes from left button to right button. 
@@ -165,7 +172,11 @@ public class AllianceButton {
 
 	/**
 		I'm too lazy to type out that big method name
+<<<<<<< HEAD
 
+=======
+	*//*
+>>>>>>> origin/master
 	public double checkDist() {
 		return ultrasonic.getUltrasonicLevel();
 	}
