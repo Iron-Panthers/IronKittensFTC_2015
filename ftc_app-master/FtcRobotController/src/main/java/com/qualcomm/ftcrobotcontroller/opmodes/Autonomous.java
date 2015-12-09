@@ -34,7 +34,8 @@ public class Autonomous extends PushBotTelemetry {
             SetPower(-1);
         }
 
-        if (timer.time() > 3.0) {
+        if (timer.time() > 3.0)
+        {
             Stop();
         }
 
