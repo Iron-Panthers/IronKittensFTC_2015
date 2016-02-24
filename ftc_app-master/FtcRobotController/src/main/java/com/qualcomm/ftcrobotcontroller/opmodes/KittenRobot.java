@@ -18,8 +18,6 @@ public class KittenRobot extends PushBotTelemetry {
 
     public KittenRobot(){}
 
-    public DriveAuto driveAuto;
-
     public final static double CONST_WHEEL_DIST = 0.88;
     //public Joystick gamepad1;
 
