@@ -24,13 +24,21 @@ public class PushBotAuto extends PushBotTelemetry
      *
      * The system calls this member when the class is instantiated.
      */
+     
+    public DriveAuto driveAuto;
+    
     public PushBotAuto ()
-
     {
+        frontLeftMotor = hardwareMap.dcMotor.get("frontLeft");
+        frontRightMotor = hardwareMap.dcMotor.get("frontRight");
+        backLeftMotor = hardwareMap.dcMotor.get("backLeft");
+        backRightMotor = hardwareMap.dcMotor.get("backRight");
         //
         // Initialize base classes.
         //
         // All via self-construction.
+        
+        driveAuto = new DriveAuto(hardwareMap);
 
         //
         // Initialize class members.
@@ -60,6 +68,7 @@ public class PushBotAuto extends PushBotTelemetry
         // Reset the motor encoders on the drive wheels.
         //
         reset_drive_encoders ();
+        driveAuto.autoRountine();
 
     } // start
 
